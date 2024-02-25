@@ -1,9 +1,9 @@
 export function Header() {
     return (
         <>
-            <header className="App-header">
-                Hello there!
-            </header>
+            <div className="page-header">
+                <h1>Hello there!</h1>
+            </div>
         </>
     )
 }
