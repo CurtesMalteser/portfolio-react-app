@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function DarkModeToggle() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState('light')
 
-    const toggleDarkMode = () => {
-        setIsDarkMode(!isDarkMode)
-        console.log(`Dark mode toggled: ${isDarkMode ? 'off' : 'on'}`)
-        // Add logic to toggle dark mode here
+    const setPreferredTheme = (prefersDarkMode: boolean) => {
+        setIsDarkMode(prefersDarkMode ? 'dark' : 'light')
+        document.querySelector('html')!!.setAttribute('data-bs-theme', prefersDarkMode ? 'dark' : 'light')
     };
 
+
+    useEffect(() => {
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+        setPreferredTheme(prefersDarkMode)
+    }, []);
+
     return (
-        <button onClick={toggleDarkMode}>
-            {isDarkMode ? 'Disable Dark Mode' : 'Enable Dark Mode'}
+        <button onClick={() => setPreferredTheme(isDarkMode === 'light' ? true : false)}>
+            {isDarkMode === 'light' ? 'Enable Dark Mode' : 'Disable Dark Mode'}
         </button>
     );
 };
