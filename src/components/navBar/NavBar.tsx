@@ -5,9 +5,9 @@ import DarkModeToggle from '../darkmode/DarkeModeToggle';
 
 function PorfolioNavbar() {
     return (
-        <Navbar>
+        <Navbar expand="lg" bg="dark">
             <Container>
-                <Navbar.Brand href="/">adb-dev</Navbar.Brand>
+                <Navbar.Brand style={{color:'white'}} href="/">adb-dev</Navbar.Brand>
                 <DarkModeToggle />
             </Container>
         </Navbar>
