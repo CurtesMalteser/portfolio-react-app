@@ -1,4 +1,3 @@
-import './Header.css';
 import { Container } from 'react-bootstrap';
 
 export function Header() {
