@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
 import { ReactComponent as Sun } from '../../assets/sun.svg';
 import { ReactComponent as Moon } from '../../assets/moon.svg';
+import { ReactComponent as Auto } from '../../assets/dark-light.svg';
+import SplitButton from 'react-bootstrap/SplitButton';
+import DarkModeToggleItem from './DarkModeToggleItem';
+
+import './DarkModeToggle.css';
 // add this import after implement dropdown menu to select dark or light mode, or auto
 // import { ReactComponent as DarkLight } from '../../assets/dark-light.svg';
+
 
 // todo: implement dropdown menu to select dark or light mode, or auto
 function DarkModeToggle() {
@@ -18,16 +24,26 @@ function DarkModeToggle() {
         setPreferredTheme(prefersDarkMode)
     }, []);
 
+    const isDarkModeActive = () => isDarkMode === 'dark'
     return (
-        <button 
-        style={{ border: 'none', background: 'none' }}
-        onClick={() => setPreferredTheme(isDarkMode === 'light' ? true : false)}
-        > {isDarkMode === 'light' ? <Sun style={{ width: 24, height: 24, fill: 'white'}} /> : <Moon style={{ 
-            fill: 'white',
-            width: 24,
-            height: 24
-            }} />}
-        </button>
+        <>
+            <button
+                style={{ border: 'none', background: 'none' }}
+                onClick={() => setPreferredTheme(isDarkMode === 'light' ? true : false)}
+            > {isDarkMode === 'light' ? <Sun className='color-mode' /> : <Moon className='color-mode'/>}
+            </button>
+
+            <SplitButton
+                key={isDarkMode}
+                id={`dropdown-split-variants-${isDarkMode}`}
+                variant={isDarkMode}
+                title={isDarkMode === 'light' ? <Sun className='color-mode' /> : <Moon className='color-mode'/>}
+            >
+                <DarkModeToggleItem Icon={Sun} mode='light' selectedMode={isDarkMode}/>
+                <DarkModeToggleItem Icon={Moon} mode='dark' selectedMode={isDarkMode}/>
+                <DarkModeToggleItem Icon={Auto} mode='auto' selectedMode={isDarkMode}/>
+            </SplitButton>
+        </>
     );
 };
 

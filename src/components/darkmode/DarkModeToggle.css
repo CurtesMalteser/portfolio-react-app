@@ -1,0 +1,14 @@
+@import "../../custom.css";
+
+.color-mode{ 
+    width: 24px;
+    height: 24px;
+ }
+
+path {
+    fill: light-dark(var(--bs-body-color), var(--bs-white));
+}
+
+circle {
+    fill: light-dark(var(--bs-body-color), var(--bs-white));
+}
