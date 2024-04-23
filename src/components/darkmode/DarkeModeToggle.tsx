@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ReactComponent as Sun } from '../../assets/sun.svg';
 import { ReactComponent as Moon } from '../../assets/moon.svg';
 import { ReactComponent as Auto } from '../../assets/dark-light.svg';
-import SplitButton from 'react-bootstrap/SplitButton';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import DarkModeToggleItem from './DarkModeToggleItem';
 
 import './DarkModeToggle.css';
@@ -11,39 +11,45 @@ import './DarkModeToggle.css';
 
 
 // todo: implement dropdown menu to select dark or light mode, or auto
-function DarkModeToggle() {
-    const [isDarkMode, setIsDarkMode] = useState('light')
 
-    const setPreferredTheme = (prefersDarkMode: boolean) => {
-        setIsDarkMode(prefersDarkMode ? 'dark' : 'light')
-        document.querySelector('html')!!.setAttribute('data-bs-theme', prefersDarkMode ? 'dark' : 'light')
+const prefersDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+function TitleSelection(selectedMode: string) {
+    switch (selectedMode) {
+        case 'light':
+            return <Sun className='color-mode' /> 
+        case 'dark':
+            return <Moon className='color-mode' /> 
+        default:
+            return <Auto className='color-mode' /> 
+    }
+}
+
+function DarkModeToggle() {
+    const [isDarkMode, setIsDarkMode] = useState(prefersDarkMode())
+
+    const setPreferredTheme = (selectedMode: string) => {
+        setIsDarkMode(selectedMode)
+        const selection : string = (selectedMode === 'auto') ? prefersDarkMode() : selectedMode
+        document.querySelector('html')!!.setAttribute('data-bs-theme', selection)
     };
 
-    useEffect(() => {
-        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-        setPreferredTheme(prefersDarkMode)
+    useEffect(() => { 
+        setPreferredTheme(prefersDarkMode())
     }, []);
 
-    const isDarkModeActive = () => isDarkMode === 'dark'
     return (
-        <>
-            <button
-                style={{ border: 'none', background: 'none' }}
-                onClick={() => setPreferredTheme(isDarkMode === 'light' ? true : false)}
-            > {isDarkMode === 'light' ? <Sun className='color-mode' /> : <Moon className='color-mode'/>}
-            </button>
-
-            <SplitButton
-                key={isDarkMode}
-                id={`dropdown-split-variants-${isDarkMode}`}
-                variant={isDarkMode}
-                title={isDarkMode === 'light' ? <Sun className='color-mode' /> : <Moon className='color-mode'/>}
-            >
-                <DarkModeToggleItem Icon={Sun} mode='light' selectedMode={isDarkMode}/>
-                <DarkModeToggleItem Icon={Moon} mode='dark' selectedMode={isDarkMode}/>
-                <DarkModeToggleItem Icon={Auto} mode='auto' selectedMode={isDarkMode}/>
-            </SplitButton>
-        </>
+        <DropdownButton
+            key={isDarkMode}
+            id={`dropdown-split-variants-${isDarkMode}`}
+            variant={isDarkMode}
+            title={ TitleSelection(isDarkMode) }
+            onSelect={(e) => setPreferredTheme(e ?? 'auto')}
+        >
+            <DarkModeToggleItem Icon={Sun} mode='light' selectedMode={isDarkMode} />
+            <DarkModeToggleItem Icon={Moon} mode='dark' selectedMode={isDarkMode} />
+            <DarkModeToggleItem Icon={Auto} mode='auto' selectedMode={isDarkMode} />
+        </DropdownButton>
     );
 };
 
