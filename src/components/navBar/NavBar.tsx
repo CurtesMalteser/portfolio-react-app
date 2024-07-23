@@ -1,6 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import DarkModeToggle from '../darkmode/DarkeModeToggle';
+import DarkModeToggle from '../darkmode/DarkModeToggle';
 
 
 function PorfolioNavbar() {

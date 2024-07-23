@@ -16,7 +16,7 @@ export function Header() {
                     <h4>{intro.introduction}</h4>
                 </Col>
                 <Col sm='4' className='img-container'>
-                    <Image className='img' src={welcomePhoto} rounded/>
+                    <Image className='img' src={welcomePhoto} rounded />
                 </Col>
             </Row>
         </Container>
