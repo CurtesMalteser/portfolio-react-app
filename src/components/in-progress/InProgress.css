@@ -25,7 +25,7 @@
     fill: none;
     stroke: light-dark(var(--bs-dark), var(--bs-primary));
     stroke-width: 4;
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .in-progress .ellipse-1 {
@@ -47,6 +47,12 @@
     100% {
         offset-distance: 100%;
     }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(2);
+    }
 }
 
 .ellipse-2 {
@@ -65,12 +71,18 @@
 
 .ellipse-2-motion {
     offset-path: path("M 120 5 A 70 115 0 1 1 120 237 A 1 1.7 0 1 1 120 5");
-    animation: ellipse-2-motion 3s cubic-bezier(0.55, 0.3, 0.01, 0.24) infinite;
+    animation: ellipse-2-motion 2s cubic-bezier(0.55, 0.3, 0.01, 0.24) infinite reverse;
 }
 
 @keyframes ellipse-2-motion {
     100% {
         offset-distance: 100%;
+    }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(2);
     }
 }
 
@@ -90,12 +102,18 @@
 
 .ellipse-3-motion {
     offset-path: path("M 120 5 A 70 115 0 1 1 120 237 A 1 1.7 0 1 1 120 5");
-    animation: ellipse-3-motion 3s cubic-bezier(0.55, 0.3, 0.01, 0.24) infinite;
+    animation: ellipse-3-motion 2s cubic-bezier(0.55, 0.3, 0.01, 0.24) infinite;
 }
 
 @keyframes ellipse-3-motion {
     100% {
         offset-distance: 100%;
+    }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(2);
     }
 }
 
