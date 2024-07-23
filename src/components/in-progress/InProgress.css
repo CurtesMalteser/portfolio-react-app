@@ -1,0 +1,115 @@
+/* Body and Container Settings */
+/* Center shapes */
+.in-progress {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Circle Shape */
+.in-progress .circle {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: light-dark(#fcd200, #ffeb83);
+    border-radius: 50%;
+    box-shadow: 0 0 12px #fffbfa, inset 0 0 10px #f8f0ec, 0 0 17px #ffffff;
+}
+
+/* Ellipse path */
+.in-progress .ellipse {
+    fill: none;
+    stroke: light-dark(var(--bs-dark), var(--bs-primary));
+    stroke-width: 4;
+    opacity: 0.3;
+}
+
+.in-progress .ellipse-1 {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    top: 27px;
+    left: 175px;
+    transform: rotate(30deg);
+    filter: drop-shadow(0 0 5px light-dark(var(--bs-primary), var(--bs-white)));
+}
+
+.ellipse-1-motion {
+    offset-path: path("M 120 5 A 70 115 0 1 1 120 237 A 1 1.7 0 1 1 120 5");
+    animation: ellipse-1-motion 3s cubic-bezier(0.55, 0.3, 0.01, 0.24) infinite;
+}
+
+@keyframes ellipse-1-motion {
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+.ellipse-2 {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    top: 125px;
+    left: 35px;
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 0 5px light-dark(var(--bs-primary), var(--bs-white)));
+}
+
+.ellipse-2 .circle {
+    background: light-dark(#ff5c5c, #ff5c5c);
+}
+
+.ellipse-2-motion {
+    offset-path: path("M 120 5 A 70 115 0 1 1 120 237 A 1 1.7 0 1 1 120 5");
+    animation: ellipse-2-motion 3s cubic-bezier(0.55, 0.3, 0.01, 0.24) infinite;
+}
+
+@keyframes ellipse-2-motion {
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+.ellipse-3 {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    top: 190px;
+    left: 188px;
+    transform: rotate(-215deg);
+    filter: drop-shadow(0 0 5px light-dark(var(--bs-primary), var(--bs-white)));
+}
+
+.ellipse-3 .circle {
+    background: light-dark(#3c57c1, #7590ff);;
+}
+
+.ellipse-3-motion {
+    offset-path: path("M 120 5 A 70 115 0 1 1 120 237 A 1 1.7 0 1 1 120 5");
+    animation: ellipse-3-motion 3s cubic-bezier(0.55, 0.3, 0.01, 0.24) infinite;
+}
+
+@keyframes ellipse-3-motion {
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+/* Set background and border color */
+.in-progress .anim-container {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* SVG position */
+.in-progress svg {
+    position: absolute;
+}
