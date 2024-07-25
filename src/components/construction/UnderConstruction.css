@@ -1,0 +1,36 @@
+:root {
+    --dynamic-bg-size: auto;
+}
+
+.tape-container {
+    background: #222;
+    font-family: verdana, Tahoma, Arial;
+    text-align: center;
+}
+
+.tape-container .tape {
+    font-size: 3rem;
+    margin: 5% 0 0;
+    padding-left: 50px;
+    padding-top: 30px;
+    padding-right: 50px;
+    padding-bottom: 30px;
+    height: auto;
+    color: #222;
+    background-image: -webkit-linear-gradient(0deg, #222, transparent, #222), linear-gradient(transparent 30px, #ff0 30px), repeating-linear-gradient(45deg, transparent, transparent 35px, #ff0 35px, #ff0 70px);
+    background-image: -moz-linear-gradient(90deg, #222, transparent, #222), linear-gradient(transparent 30px, #ff0 30px), repeating-linear-gradient(45deg, transparent, transparent 35px, #ff0 35px, #ff0 70px);
+    background-image: -o-linear-gradient(90deg, #222, transparent, #222), linear-gradient(transparent 30px, #ff0 30px), repeating-linear-gradient(45deg, transparent, transparent 35px, #ff0 35px, #ff0 70px);
+    background-image: linear-gradient(90deg, #222, transparent, #222), linear-gradient(transparent 30px, #ff0 30px), repeating-linear-gradient(45deg, transparent, transparent 35px, #ff0 35px, #ff0 70px);
+    background-size: auto, auto calc(var(--dynamic-bg-size) - 30px), auto;
+}
+
+.tape-container .tape h1 {
+    cursor: default;
+    display: block;
+    padding: 1rem;
+    white-space: nowrap;
+}
+
+.subtitle {
+    padding-top: 24px;
+}

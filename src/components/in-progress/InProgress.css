@@ -25,7 +25,8 @@
     fill: none;
     stroke: light-dark(var(--bs-dark), var(--bs-primary));
     stroke-width: 4;
-    opacity: 0.4;
+    filter: blur(3px);
+    opacity: 0.6;
 }
 
 .in-progress .ellipse-1 {
