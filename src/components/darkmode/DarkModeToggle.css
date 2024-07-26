@@ -1,14 +1,14 @@
 @import "../../custom.css";
 
-.color-mode{ 
+.icon-size {
     width: 24px;
     height: 24px;
- }
+}
 
-path {
+.icon-size path {
     fill: light-dark(var(--bs-body-color), var(--bs-white));
 }
 
-circle {
+.icon-size circle {
     fill: light-dark(var(--bs-body-color), var(--bs-white));
 }
